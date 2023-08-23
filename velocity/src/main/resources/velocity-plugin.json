@@ -1,0 +1,11 @@
+{
+  "id": "velocitypacketsinjector",
+  "name": "VelocityPacketsInjector",
+  "version": "${pluginVersion}",
+  "description": "Extends default Velocity possibilities by registering new packets.",
+  "authors": [
+    "Wector11211"
+  ],
+  "dependencies": [],
+  "main": "dev.wector11211.vpi.VelocityPacketsInjectorPlugin"
+}

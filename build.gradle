@@ -1,0 +1,46 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    group = 'dev.wector11211.vpi'
+    version = '1.0.0'
+
+    compileJava.options.encoding = 'UTF-8'
+    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+
+        maven {
+            url = 'https://repo.velocitypowered.com/snapshots/'
+        }
+    }
+
+    dependencies {
+        compileOnly 'com.velocitypowered:velocity-api:3.2.0-SNAPSHOT'
+        compileOnly 'com.velocitypowered:velocity-proxy:3.2.0-SNAPSHOT'
+
+        compileOnly 'org.projectlombok:lombok:1.18.26'
+        annotationProcessor 'org.projectlombok:lombok:1.18.26'
+    }
+
+    shadowJar {
+        archiveFileName = "${rootProject.name}-${project.name}-${project.version}.jar"
+        relocate project.group, project.group
+    }
+
+    tasks.register('relocateShadowJar', ConfigureShadowRelocation) {
+        target = tasks.shadowJar
+        prefix = "${project.group}.api.shade"
+    }
+
+    tasks.shadowJar.dependsOn tasks.relocateShadowJar
+}
