@@ -3,10 +3,6 @@ plugins {
     id 'maven-publish'
 }
 
-dependencies {
-
-}
-
 task sourceJavadoc(type: Jar) {
     from sourceSets.main.allSource
     archiveClassifier.set('sources')

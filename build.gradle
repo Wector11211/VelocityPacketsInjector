@@ -22,12 +22,12 @@ subprojects {
             url = 'https://repo.velocitypowered.com/snapshots/'
         }
         maven {
-            url = 'https://maven.elytrium.net/repo/'
+            url = 'https://mvn.exceptionflug.de/repository/exceptionflug-public/'
         }
-//        mavenLocal()
     }
 
     dependencies {
+        compileOnly 'io.netty:netty-all:4.0.0.Final'
         compileOnly 'com.velocitypowered:velocity-api:3.2.0-SNAPSHOT'
         compileOnly 'com.velocitypowered:velocity-proxy:3.2.0-SNAPSHOT'
 
