@@ -5,3 +5,12 @@ plugins {
 dependencies {
     api project(path: ':api', configuration: 'shadow')
 }
+
+processResources {
+    filteringCharset 'UTF-8'
+    filesMatching('velocity-plugin.json') {
+        expand 'pluginVersion': project.version
+    }
+}
+
+tasks.processResources.outputs.upToDateWhen { false }
