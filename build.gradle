@@ -2,11 +2,13 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocatio
 
 plugins {
     id 'java'
+    id 'maven-publish'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'maven-publish'
     apply plugin: 'com.github.johnrengelman.shadow'
 
     group = 'dev.wector11211.vpi'
@@ -46,4 +48,12 @@ subprojects {
     }
 
     tasks.shadowJar.dependsOn tasks.relocateShadowJar
+
+    publishing {
+        publications {
+            shadow(MavenPublication) {
+                from components.java
+            }
+        }
+    }
 }
