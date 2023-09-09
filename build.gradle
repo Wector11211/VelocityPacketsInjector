@@ -10,18 +10,21 @@ subprojects {
     apply plugin: 'com.github.johnrengelman.shadow'
 
     group = 'dev.wector11211.vpi'
-    version = '1.0.0'
+    version = '1.0.1'
 
     compileJava.options.encoding = 'UTF-8'
     sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
 
     repositories {
-        mavenLocal()
         mavenCentral()
 
         maven {
             url = 'https://repo.velocitypowered.com/snapshots/'
         }
+        maven {
+            url = 'https://maven.elytrium.net/repo/'
+        }
+//        mavenLocal()
     }
 
     dependencies {
@@ -33,7 +36,7 @@ subprojects {
     }
 
     shadowJar {
-        archiveFileName = "${rootProject.name}-${project.name}-${project.version}.jar"
+        archiveFileName = "${rootProject.name}-${project.version}.jar"
         relocate project.group, project.group
     }
 
