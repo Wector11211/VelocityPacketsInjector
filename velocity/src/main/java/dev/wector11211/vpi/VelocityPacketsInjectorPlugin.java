@@ -28,6 +28,8 @@ public class VelocityPacketsInjectorPlugin {
 
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
+        packetsInjector.enable();
+
         proxy.getEventManager().register(this, new PlayerListener(packetsInjector));
     }
 }

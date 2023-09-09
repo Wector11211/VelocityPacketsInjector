@@ -15,6 +15,10 @@ public class VelocityPacketsInjectorImp extends VelocityPacketsInjector {
         this.plugin = plugin;
     }
 
+    public void enable() {
+        register(this);
+    }
+
     @Override
     public List<VelocityPacketListener<?>> getListeners(Object plugin) {
         return Collections.unmodifiableList(listeners.get(plugin));
